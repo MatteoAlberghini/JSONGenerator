@@ -9,6 +9,9 @@ file_name = input("Enter JSON file name: ")
 desktop = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop')
 completeName = os.path.join(desktop, file_name)
 
+# Function to detect if string is a number
+
+
 def is_number(s):
     try:
         float(s)
@@ -16,7 +19,8 @@ def is_number(s):
     except ValueError:
         return False
 
-# Ask number of input
+
+# Ask number of input and checks if is an actual number
 number = 0
 while True:
     number_of_input = input("Enter number of input: ")
@@ -24,26 +28,28 @@ while True:
         number = int(number_of_input)
         break
     else:
-        print("Input needs to be a number")
+        print("Input needs to be an integer")
 
+# Ask for all name in the dictionary
 array_name_input = []
 for i in range(0, number):
     temp = i+1
     array_name_input.append(input("Insert string number(%d): " % temp))
 
-
-data= { }
+# For each of the string he puts in, we ask the data
+data = {}
 data_array = []
-for i in range(0,len(array_name_input)):
+for i in range(0, len(array_name_input)):
     for string in array_name_input:
-        text = "Insert " + string + " for the " + str(i + 1) + " time: "
+        text = "Insert " + string.upper() + " for the " + str(i + 1).upper() + " time: "
         inp = input(text)
         if is_number(inp):
-            print(inp)
             data[string] = float(inp)
         else:
             data[string] = inp
     data_array.append(data)
 
+# Write on desktop with filename as the name of the file
 with open(completeName + ".json", "w") as f:
     json.dump(data_array, f)
+
