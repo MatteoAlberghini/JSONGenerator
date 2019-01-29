@@ -37,17 +37,20 @@ for i in range(0, number):
     array_name_input.append(input("Insert string number(%d): " % temp))
 
 # For each of the string he puts in, we ask the data
-data = {}
+
 data_array = []
+
 for i in range(0, len(array_name_input)):
+    data = {}
     for string in array_name_input:
         text = "Insert " + string.upper() + " for the " + str(i + 1).upper() + " time: "
-        inp = input(text)
-        if is_number(inp):
-            data[string] = float(inp)
+        result = input(text)
+        if is_number(result):
+            data[string] = float(result)
         else:
-            data[string] = inp
+            data[string] = result
     data_array.append(data)
+
 
 # Write on desktop with filename as the name of the file
 with open(completeName + ".json", "w") as f:
