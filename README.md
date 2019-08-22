@@ -1,2 +1,2 @@
 # JSONGenerator
-Simple JSON generator: From console input to JSON file in your dekstop
+Just a tool I made for myself to make json out of console inputs
